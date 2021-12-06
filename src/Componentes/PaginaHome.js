@@ -1,15 +1,14 @@
 import React, { Component , useEffect,useState } from "react";
 import { matriz_metodo } from "./matriz_metodos";
 export default function PaginaHome() {
-
+  let meth = new matriz_metodo(0,0,0);
   
    function x(){
      console.log("x");
      return 5;
    };
    function y(){
-     debugger;
-     let meth = new matriz_metodo(0,0,0);
+     
      let g = meth.filas;
      console.log(meth.columnas);
      
