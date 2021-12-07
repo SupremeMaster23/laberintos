@@ -21,11 +21,11 @@ export default function PaginaHome() {
       let list = [];
       let v = [0,0,0,0];
       list= meth.setearGrid(list);
-      setGrid(list);
       var pil ;
       pil = pila.agregarPila(pil,1,1,0,false,v);
       list =iter1.Visit(1,1,list,pil, meth);
       console.log(list);
+      setGrid(list);
 
       
    };
@@ -42,6 +42,29 @@ export default function PaginaHome() {
       <input onChange={(e)=>handleColumnas(e)} value={columnas} type="number"></input>
       <input onChange={(e)=>handleFilas(e)} value={filas} type="number"></input>
       <button onClick={obtenerInput}></button>
+      {
+        grid.map( (lineas)=>{
+          return(
+          <div >
+          {lineas.map(
+              (columnas, index)=>{
+                return(
+                  columnas == '#' ?(
+                      <span ><img src={require('/Users/gabrieladiazr/Documents/GitHub/laberintos/src/Componentes/pared.png').default} width="5%"></img></span>
+                
+                  ) :( <span><img src={require('/Users/gabrieladiazr/Documents/GitHub/laberintos/src/Componentes/camino.png').default} width="5%" ></img></span>)
+                  )
+              }  
+            )
+            }
+            <br></br>
+            </div>
+           
+          )
+          }
+        
+        )
+      }
       </div>
   );
    }
