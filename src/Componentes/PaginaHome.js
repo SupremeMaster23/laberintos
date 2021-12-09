@@ -24,9 +24,8 @@ export default function PaginaHome() {
       var pil ;
       pil = pila.agregarPila(pil,1,1,0,false,v);
       list =iter1.Visit(1,1,list,pil, meth);
-      console.log(list);
       setGrid(list);
-
+      meth.solveMaze(list);
       
    };
    const handleFilas = (e) => {
@@ -52,7 +51,12 @@ export default function PaginaHome() {
                   columnas == '#' ?(
                       <span ><img src={require('/Users/gabrieladiazr/Documents/GitHub/laberintos/src/Componentes/pared.png').default} width="5%"></img></span>
                 
-                  ) :( <span><img src={require('/Users/gabrieladiazr/Documents/GitHub/laberintos/src/Componentes/camino.png').default} width="5%" ></img></span>)
+                  ) :( columnas=='*' ?(
+                    <span><img src={require('/Users/gabrieladiazr/Documents/GitHub/laberintos/src/solucion.png').default} width="5%" ></img></span>)
+                   :(
+                    <span><img src={require('/Users/gabrieladiazr/Documents/GitHub/laberintos/src/Componentes/camino.png').default} width="5%" ></img></span>)
+                  )
+                  
                   )
               }  
             )
