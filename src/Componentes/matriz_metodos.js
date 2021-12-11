@@ -1,11 +1,12 @@
 export class matriz_metodo {
   constructor(columnas, filas, k, gridf) {
-    this.columnas = 3;
+    this.columnas = 0;
     this.filas = 0;
     this.k = 0;
     this.gridf=[];
+  
   }
-
+  
   Pedir(f, c) {
     this.filas = parseInt(f);
     this.columnas = parseInt(c);
@@ -50,10 +51,9 @@ solveMaze(maze)
   let sol = maze;
   
         if (this.solveMazeUtil(maze, 0, 1, sol) == false) {
-          console.log(sol);
           return false;
         }
-        console.log(sol);
+        this.gridf = sol;
         return true;
 }
 

@@ -6,7 +6,6 @@ export class recursivo{
     }
 
     Visit(x,y,grid, mm){
-        console.log("recursiva");
         const direcciones ={
             arriba : 0,
             derecha : 1,

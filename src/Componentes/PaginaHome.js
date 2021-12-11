@@ -4,17 +4,16 @@ import { Nodo } from "./Nodo";
 import { Pila } from "./Pila";
 import { Iterativo } from "./Iterativo";
 export default function PaginaHome() {
-  let meth = new matriz_metodo(0,0,0);
+
   let pila = new Pila();
   let iter1 = new Iterativo(0);
    const [filas, setFilas]= React.useState(0);
    const [columnas, setColumnas]= React.useState(0);
+   const [meth, setmeth]= React.useState(new matriz_metodo(0,0,0));
    const [grid, setGrid]= React.useState([]);
-
-   function x(){
-     console.log("x");
-     return 5;
-   };
+   useEffect(() => {
+     console.log(grid);
+    }, grid);
    function obtenerInput(){
      
       meth.Pedir(filas, columnas);
@@ -25,9 +24,14 @@ export default function PaginaHome() {
       pil = pila.agregarPila(pil,1,1,0,false,v);
       list =iter1.Visit(1,1,list,pil, meth);
       setGrid(list);
-      meth.solveMaze(list);
-      
    };
+   function resolver(){
+    let list = [];
+    list =grid;
+    meth.solveMaze(list);
+    setGrid([...grid, list]);
+     
+ };
    const handleFilas = (e) => {
       setFilas(e.target.value);
     };
@@ -40,7 +44,9 @@ export default function PaginaHome() {
       
       <input onChange={(e)=>handleColumnas(e)} value={columnas} type="number"></input>
       <input onChange={(e)=>handleFilas(e)} value={filas} type="number"></input>
-      <button onClick={obtenerInput}></button>
+      <button onClick={obtenerInput}>CREAR  </button>
+      <button onClick={resolver}>resolver </button>
+      
       {
         grid.map( (lineas)=>{
           return(
