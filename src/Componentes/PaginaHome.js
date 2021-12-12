@@ -3,19 +3,18 @@ import { matriz_metodo } from "./matriz_metodos";
 import { Nodo } from "./Nodo";
 import { Pila } from "./Pila";
 import { Iterativo } from "./Iterativo";
+import {primMethod} from "./primMethod";
 export default function PaginaHome() {
 
   let pila = new Pila();
   let iter1 = new Iterativo(0);
+  let prim = new primMethod([],[],0,0);
    const [filas, setFilas]= React.useState(0);
    const [columnas, setColumnas]= React.useState(0);
    const [meth, setmeth]= React.useState(new matriz_metodo(0,0,0));
    const [grid, setGrid]= React.useState([]);
-   useEffect(() => {
-     console.log(grid);
-    }, grid);
+
    function obtenerInput(){
-     
       meth.Pedir(filas, columnas);
       let list = [];
       let v = [0,0,0,0];
@@ -23,6 +22,10 @@ export default function PaginaHome() {
       var pil ;
       pil = pila.agregarPila(pil,1,1,0,false,v);
       list =iter1.Visit(1,1,list,pil, meth);
+
+      prim.col =parseInt(columnas);
+      prim.fil=parseInt(filas);
+      prim.llenarVertices(list);
       setGrid(list);
    };
    function resolver(){
@@ -30,6 +33,8 @@ export default function PaginaHome() {
     list =grid;
     meth.solveMaze(list);
     setGrid([...grid, list]);
+
+
      
  };
    const handleFilas = (e) => {
