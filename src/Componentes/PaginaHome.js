@@ -4,6 +4,9 @@ import { Nodo } from "./Nodo";
 import { Pila } from "./Pila";
 import { Iterativo } from "./Iterativo";
 import {primMethod} from "./primMethod";
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 export default function PaginaHome() {
 
   let pila = new Pila();
@@ -23,10 +26,11 @@ export default function PaginaHome() {
       pil = pila.agregarPila(pil,1,1,0,false,v);
       list =iter1.Visit(1,1,list,pil, meth);
 
-      prim.col =parseInt(columnas);
-      prim.fil=parseInt(filas);
+      prim.col =meth.columnas;
+      prim.fil=meth.filas;
       prim.llenarVertices(list);
-      setGrid(list);
+       let gg = prim.compilar(list);
+      setGrid(gg);
    };
    function resolver(){
     let list = [];
@@ -46,11 +50,28 @@ export default function PaginaHome() {
   return (
     <div style={{marginLeft:'100px',marginRight:'100px',color:'Red'}}>
       <h1>Home</h1>
-      
-      <input onChange={(e)=>handleColumnas(e)} value={columnas} type="number"></input>
-      <input onChange={(e)=>handleFilas(e)} value={filas} type="number"></input>
-      <button onClick={obtenerInput}>CREAR  </button>
-      <button onClick={resolver}>resolver </button>
+      <Grid container spacing={0} >
+      <Grid item xs={2}>
+        </Grid>
+        <Grid item xs={2}>
+        </Grid>
+        <Grid item xs={2}>
+        <TextField id="standard-basic" label="Columnas" variant="standard" onChange={(e)=>handleColumnas(e)} value={columnas} type="number"/>
+        </Grid>
+        <Grid item xs={2}>
+        <TextField id="standard-basic" label="Filas" variant="standard" onChange={(e)=>handleFilas(e)} value={filas} type="number"/>
+        </Grid>
+        <Grid item xs={2}>
+        </Grid>
+        <Grid item xs={2}>
+        </Grid>
+        <Grid item xs={12} style={{margin:"10px"}}>
+        <Button style={{margin:"10px"}} variant="contained" onClick={obtenerInput}>GENERAR</Button>
+        <Button style={{margin:"10px"}} variant="contained" onClick={resolver}>RESOLVER</Button>
+        <Button style={{margin:"10px"}} variant="contained" onClick={resolver}>PRIM</Button>
+        </Grid>
+        </Grid>
+    
       
       {
         grid.map( (lineas)=>{
