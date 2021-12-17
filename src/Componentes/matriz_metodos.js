@@ -10,10 +10,10 @@ export class matriz_metodo {
   Pedir(f, c) {
     this.filas = parseInt(f);
     this.columnas = parseInt(c);
-    if (this.filas % 2 == 0) {
+    if (this.filas % 2 === 0) {
       this.filas += 1;
     }
-    if (this.columnas % 2 == 0) {
+    if (this.columnas % 2 === 0) {
       this.columnas += 1;
     }
   }
@@ -43,14 +43,14 @@ export class matriz_metodo {
 isSafe(maze,x,y)
 {
    
-        return (x >= 0 && x < this.filas && y >= 0 && y < this.columnas && maze[x][y] ==" ");
+        return (x >= 0 && x < this.filas && y >= 0 && y < this.columnas && maze[x][y] ===" ");
 }
  
 solveMaze(maze)
 {
   let sol = maze;
   
-        if (this.solveMazeUtil(maze, 0, 1, sol) == false) {
+        if (this.solveMazeUtil(maze, 0, 1, sol) === false) {
           return false;
         }
         this.gridf = sol;
@@ -61,15 +61,15 @@ solveMaze(maze)
  solveMazeUtil(maze,x,y,sol)
 {
     
-        if (x == this.filas - 1 && y == this.columnas - 2  && maze[x][y] == " ") {
+        if (x === this.filas - 1 && y === this.columnas - 2  && maze[x][y] === " ") {
             sol[x][y] = "*";
             return true;
         }
   
       
-        if (this.isSafe(maze, x, y) == true) {
+        if (this.isSafe(maze, x, y) === true) {
               
-              if (sol[x][y] == "*")
+              if (sol[x][y] === "*")
                   return false;
             
            

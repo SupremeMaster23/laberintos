@@ -1,6 +1,4 @@
-import { Nodo } from "./Nodo";
 import { Pila } from "./Pila";
-import { matriz_metodo } from "./matriz_metodos";
 export class Iterativo{
     constructor(k){
      this.k = 0;
@@ -27,7 +25,7 @@ export class Iterativo{
                 }
             } else{
                
-                grid[x][y] = ' ';
+                grid[x][y] = " ";
               
                 var dirs =[direcciones.arriba, direcciones.derecha, direcciones.abajo,direcciones.izquierda] ;
                 for (i=0; i<4; ++i){
@@ -50,14 +48,15 @@ export class Iterativo{
                     case direcciones.abajo: dx = 1; break;
                     case direcciones.derecha: dy = 1; break;
                     case direcciones.izquierda: dy = -1; break;
+                    default : break;
                 }
                 
                 var x2 = x + (dx*2);
                 var y2 = y + (dy*2);
                 if (mm.IsInBounds(x2,y2)){
-                    if (grid[x2][y2] == '#'){
+                    if (grid[x2][y2] === "#"){
                         
-                        grid[x2-dx][y2-dy] = ' ';
+                        grid[x2-dx][y2-dy] = " ";
                         x=x2;
                         y=y2;
                         pila.iter = i;
@@ -66,7 +65,7 @@ export class Iterativo{
                     }
                 }
               
-                if(i == 3){pila.iter = ++i;}
+                if(i === 3){pila.iter = ++i;}
             }
             this.k++;
         }

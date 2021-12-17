@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import PaginaHome from "./Componentes/PaginaHome";
 import Prim from "./Componentes/Prim";
 import NavBar from "./Componentes/Navbar";
@@ -12,7 +12,7 @@ function App() {
       
        <Switch>
 
-          <Route exact path="/" exact component={PaginaHome}></Route>
+          <Route exact path="/" component={PaginaHome}></Route>
           <Route exact path="/prim" component={Prim} />
 
       </Switch>

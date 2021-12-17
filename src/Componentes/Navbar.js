@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import PaginaHome from "./PaginaHome";
 import "./Navbar.css";
 
 
@@ -28,7 +27,7 @@ function NavBar() {
                                 className="nav-links"
                                 onClick={handleClick}
                             >
-                                Inicio
+                                Laberinto Iterativo
                             </NavLink>
 
                         </li>
@@ -41,36 +40,12 @@ function NavBar() {
                                 className="nav-links"
                                 onClick={handleClick}
                             >
-                                Prim
+                                Laberinto Recursivo
                             </NavLink>
 
                         </li>
-                        <li className="nav-item">
-
-                            <NavLink
-                                exact
-                                to="/blog"
-                                activeClassName="active"
-                                className="nav-links"
-                                onClick={handleClick}
-                            >
-                                Noticias
-                            </NavLink>
-
-                        </li>
-                        <li className="nav-item">
-
-                            <NavLink
-                                exact
-                                to="/contact"
-                                activeClassName="active"
-                                className="nav-links"
-                                onClick={handleClick}
-                            >
-                                Calendario de Partidos
-                            </NavLink>
-
-                        </li>
+                       
+                       
                     </ul>
                     <div className="nav-icon" onClick={handleClick}>
                         <i className={click ? "fas fa-times" : "fas fa-bars"}></i>

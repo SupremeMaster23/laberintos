@@ -13,7 +13,7 @@ export class primMethod {
         for(let x =0 ; x< this.fil ; x++){
             for(let y =0 ; y<this.col ; y++){
                 debugger;
-                if(grid[x][y]==" "){
+                if(grid[x][y]===" "){
                     
                     let s1 = x.toString()+" "+y.toString();
                     this.v.push(s1);
@@ -33,7 +33,7 @@ export class primMethod {
                         let s2 = Norte.toString()+" "+y.toString();
                         let ponderacion = (y*y)+(Norte*Norte);
                         
-                        if(grid[Norte][y]!="#"){
+                        if(grid[Norte][y]!=="#"){
                             
                       
                         let p = ponderacion.toString();
@@ -48,7 +48,7 @@ export class primMethod {
                         
                         let s2 = Sur.toString()+" "+y.toString();
                         let ponderacion = (y*y)+(Sur*Sur);
-                         if(grid[Sur][y]!="#"){
+                         if(grid[Sur][y]!=="#"){
                         let p = ponderacion.toString();
                         let ind1 = contador.toString();
                         let ind2 = "-2";
@@ -61,7 +61,7 @@ export class primMethod {
                        
                         let s2 = x.toString()+" "+Este.toString();
                         let ponderacion = (Este*Este)+(x*x);
-                        if(grid[x][Este]!="#"){
+                        if(grid[x][Este]!=="#"){
                         let p = ponderacion.toString();
                         let ind1 = contador.toString();
                         let ind2 = "-2";
@@ -74,7 +74,7 @@ export class primMethod {
                         
                         let s2 = x.toString()+" "+Oeste.toString();
                         let ponderacion = (Oeste*Oeste)+(x*x);
-                        if(grid[x][Oeste]!="#"){
+                        if(grid[x][Oeste]!=="#"){
                         let p = ponderacion.toString();
                         let ind1 = contador.toString();
                         let ind2 = "-2";
@@ -93,7 +93,7 @@ export class primMethod {
             let indx = this.v.indexOf(this.a[x][4]);
             this.a[x][1]=indx.toString();
         }
-        console.log(this.a);
+       
        
     }
 
@@ -114,7 +114,7 @@ export class primMethod {
                 let srcIndex = vertices.indexOf(src);
                 for (const obj of objs) {
                    let objIndex = vertices.indexOf(obj);
-                                     if (parseInt(edge[0]) === srcIndex && parseInt(edge [1]) === objIndex || parseInt(edge [0]) === objIndex && parseInt(edge [1]) === srcIndex) {
+                                     if ((parseInt(edge[0]) === srcIndex && parseInt(edge[1]) === objIndex) || (parseInt(edge[0]) === objIndex && parseInt(edge[1]) === srcIndex)) {
                         edgesBetweenSrcObj.push(edge);
                     }
                 }
@@ -164,7 +164,7 @@ export class primMethod {
              let sf1 = xx1.toString()+" "+yy1.toString();
              let sf2 = xx2.toString()+" "+yy2.toString();
              
-             if(sf1==s1 || sf2==s1 ){
+             if(sf1===s1 || sf2===s1 ){
                  let sfinal = (x1-1).toString()+" "+y1.toString();
                  
                  let aristaF = ["0","0","0",sfinal,s1]
@@ -172,9 +172,9 @@ export class primMethod {
                  break;
              }
               
-                cur =infected.indexOf (vertices [parseInt(min [0])]) === -1? vertices [parseInt(min [0])]: vertices [parseInt(min [1])];; 
+                cur =infected.indexOf (vertices[parseInt(min[0])]) === -1? vertices[parseInt(min[0])]: vertices[parseInt(min[1])];; 
    }
-   console.log(mstree);
+
    return mstree;
 }
 

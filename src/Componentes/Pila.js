@@ -1,9 +1,6 @@
 import { Nodo } from "./Nodo";
 export class Pila{
 
-    constructor(){
-
-    }
     agregarPila(pila, posx,posy, i , estate, dir){
        var nuevo = new Nodo(0,0,0,false,[],null);
        nuevo.x = posx;
