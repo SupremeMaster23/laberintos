@@ -3,10 +3,9 @@ export class matriz_metodo {
     this.columnas = 0;
     this.filas = 0;
     this.k = 0;
-    this.gridf=[];
-  
+    this.gridf = [];
   }
-  
+
   Pedir(f, c) {
     this.filas = parseInt(f);
     this.columnas = parseInt(c);
@@ -40,62 +39,49 @@ export class matriz_metodo {
     return true;
   }
 
-isSafe(maze,x,y)
-{
-   
-        return (x >= 0 && x < this.filas && y >= 0 && y < this.columnas && maze[x][y] ===" ");
+  isSafe(maze, x, y) {
+    return (
+      x >= 0 &&
+      x < this.filas &&
+      y >= 0 &&
+      y < this.columnas &&
+      maze[x][y] === " "
+    );
+  }
+
+  solveMaze(maze) {
+    let sol = maze;
+
+    if (this.solveMazeUtil(maze, 0, 1, sol) === false) {
+      return false;
+    }
+    this.gridf = sol;
+    return true;
+  }
+
+  solveMazeUtil(maze, x, y, sol) {
+    if (x === this.filas - 1 && y === this.columnas - 2 && maze[x][y] === " ") {
+      sol[x][y] = "*";
+      return true;
+    }
+
+    if (this.isSafe(maze, x, y) === true) {
+      if (sol[x][y] === "*") return false;
+
+      sol[x][y] = "*";
+
+      if (this.solveMazeUtil(maze, x + 1, y, sol)) return true;
+
+      if (this.solveMazeUtil(maze, x, y + 1, sol)) return true;
+
+      if (this.solveMazeUtil(maze, x - 1, y, sol)) return true;
+
+      if (this.solveMazeUtil(maze, x, y - 1, sol)) return true;
+
+      sol[x][y] = " ";
+      return false;
+    }
+
+    return false;
+  }
 }
- 
-solveMaze(maze)
-{
-  let sol = maze;
-  
-        if (this.solveMazeUtil(maze, 0, 1, sol) === false) {
-          return false;
-        }
-        this.gridf = sol;
-        return true;
-}
-
-  
- solveMazeUtil(maze,x,y,sol)
-{
-    
-        if (x === this.filas - 1 && y === this.columnas - 2  && maze[x][y] === " ") {
-            sol[x][y] = "*";
-            return true;
-        }
-  
-      
-        if (this.isSafe(maze, x, y) === true) {
-              
-              if (sol[x][y] === "*")
-                  return false;
-            
-           
-            sol[x][y] = "*";
-           
-            if (this.solveMazeUtil(maze, x + 1, y, sol))
-                return true;
-  
-            if (this.solveMazeUtil(maze, x, y + 1, sol))
-                return true;
-            
-            if (this.solveMazeUtil(maze, x - 1, y, sol))
-                return true;
-  
-            if (this.solveMazeUtil(maze, x, y - 1, sol))
-                return true;
-
-            sol[x][y] = " ";
-            return false;
-        }
-        
-        return false;
-}
-
-
-
-}
-
-

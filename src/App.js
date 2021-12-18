@@ -3,20 +3,17 @@ import { Switch, Route } from "react-router-dom";
 import PaginaHome from "./Componentes/PaginaHome";
 import Prim from "./Componentes/Prim";
 import NavBar from "./Componentes/Navbar";
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-       <NavBar> </NavBar>
-      
-       <Switch>
+      <NavBar> </NavBar>
 
-          <Route exact path="/" component={PaginaHome}></Route>
-          <Route exact path="/prim" component={Prim} />
-
+      <Switch>
+        <Route exact path="/" component={PaginaHome}></Route>
+        <Route exact path="/prim" component={Prim} />
       </Switch>
-   
     </div>
   );
 }
